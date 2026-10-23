@@ -35,10 +35,25 @@ while (!adjectives.isDone) System.print(adjectives.call())
     model and let you organize your program into an army of communicating
     coroutines.
 
- *  **Wren is a scripting language.** Wren is intended for embedding in
-    applications. It has no dependencies, a small standard library,
-    and [an easy-to-use C API][embedding]. It compiles cleanly as C99, C++98
-    or anything later.
+ *  **Wren is a scripting language.** It has no dependencies beyond the Go
+    standard library and a small standard library of its own.
+
+### Building and running
+
+The virtual machine and its core library are written in Go. Build the `wren`
+command from the repository root and give it a script to run:
+
+```sh
+CGO_ENABLED=0 go build -o wren .
+./wren example/hello.wren
+```
+
+Run the test suite, which exercises the command over the Wren scripts under
+`test/` and checks them against their `// expect:` comments, with:
+
+```sh
+go test ./...
+```
 
 If you like the sound of this, [let's get started][started]. You can even try
 it [in your browser][browser]! Excited? Well, come on and [get
@@ -52,7 +67,6 @@ involved][contribute]!
 [perf]: http://wren.io/performance.html
 [classes]: http://wren.io/classes.html
 [fibers]: http://wren.io/concurrency.html
-[embedding]: http://wren.io/embedding/
 [started]: http://wren.io/getting-started.html
 [browser]: http://ppvk.github.io/wren-nest/
 [contribute]: http://wren.io/contributing.html
